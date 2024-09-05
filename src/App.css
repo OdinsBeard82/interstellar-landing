@@ -1,85 +1,53 @@
-/* Base styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #0b0c10;
-  color: #c5c6c7;
+.App {
   text-align: center;
+  background-color: black;
+  color: white;
+  padding: 0;
+  margin: 0;
 }
 
-.App {
+.App-header {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.movie-details {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+.movie-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.space-time-sections {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(19, 20, 46, 1) 100%);
+  margin: 20px;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #66fcf1;
-  text-shadow: 2px 2px 8px #45a29e;
-}
-
-p {
-  font-size: 1.2rem;
-  margin: 1rem 0;
-  max-width: 800px;
-  line-height: 1.5;
-  color: #c5c6c7;
-}
-
-/* Movie poster image */
-img {
+.section {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #fff;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  max-width: 600px;
 }
 
-/* Release date */
-.release-date {
-  font-style: italic;
-  margin-top: 1rem;
-  color: #66fcf1;
+.section-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-/* Hover effect for the poster */
-img:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Footer styles */
 .footer {
-  margin-top: 2rem;
-  font-size: 1rem;
-  color: #66fcf1;
-}
-
-/* Responsive styles */
-@media only screen and (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  img {
-    width: 90%;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 0.9rem;
-  }
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
