@@ -1,38 +1,85 @@
-.App {
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0b0c10;
+  color: #c5c6c7;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(19, 20, 46, 1) 100%);
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #66fcf1;
+  text-shadow: 2px 2px 8px #45a29e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  max-width: 800px;
+  line-height: 1.5;
+  color: #c5c6c7;
+}
+
+/* Movie poster image */
+img {
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Release date */
+.release-date {
+  font-style: italic;
+  margin-top: 1rem;
+  color: #66fcf1;
+}
+
+/* Hover effect for the poster */
+img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #66fcf1;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  p {
+    font-size: 1rem;
+  }
+
+  img {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
   }
 }
