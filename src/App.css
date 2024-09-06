@@ -1,33 +1,84 @@
+.App {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.App-header {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.movie-details {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+.movie-details img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
 .view-through-section {
-  margin-top: 30px;
+  margin: 20px;
 }
 
 .image-viewer {
   position: relative;
-  text-align: center;
-  margin: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .current-image {
-  width: 80%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
 .image-controls {
-  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-button {
+.image-controls button {
   padding: 10px 20px;
-  margin: 0 10px;
-  background-color: #333;
+  font-size: 16px;
+  background-color: #444;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #555;
+.image-controls button:hover {
+  background-color: #666;
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .image-controls button {
+    padding: 8px 16px;
+  }
+
+  .movie-details img {
+    max-width: 100%;
+  }
+
+  .image-viewer {
+    max-width: 100%;
+  }
 }

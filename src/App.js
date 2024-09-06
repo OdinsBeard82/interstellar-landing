@@ -49,7 +49,7 @@ function App() {
       </div>
 
       <div className="view-through-section">
-        <h2>View Through Interstellar</h2>
+        <h2>Journey Through Interstellar</h2>
         <div className="image-viewer">
           <img
             className="current-image"
