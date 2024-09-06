@@ -1,101 +1,33 @@
-/* General Styling */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: black;
-  color: white;
+.view-through-section {
+  margin-top: 30px;
 }
 
-.App {
+.image-viewer {
+  position: relative;
   text-align: center;
+  margin: 20px;
 }
 
-/* Hero Section */
-.hero {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-}
-
-.hero-content {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-}
-
-.hero p {
-  font-size: 1.5rem;
-}
-
-.cta-button {
-  padding: 10px 20px;
-  background-color: #ff9900;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.cta-button:hover {
-  background-color: #ff6600;
-}
-
-/* Overview Section */
-.overview {
-  display: flex;
-  justify-content: space-around;
-  margin: 40px 20px;
-}
-
-.movie-poster img {
-  border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.movie-info {
-  max-width: 600px;
-  text-align: left;
-}
-
-.release-date {
-  margin-top: 20px;
-  font-size: 1.1rem;
-}
-
-/* Space-Time Sections */
-.space-time-sections {
-  margin: 40px 20px;
-}
-
-.space-time-sections h2 {
-  margin-bottom: 20px;
-}
-
-.section {
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.section-image {
-  width: 100%;
-  max-width: 600px;
+.current-image {
+  width: 80%;
+  height: auto;
   border-radius: 8px;
 }
 
-.footer {
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
+.image-controls {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
 }

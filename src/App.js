@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [movieData, setMovieData] = useState(null);
   const [error, setError] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // State for tracking current image
 
   useEffect(() => {
     const getMovieData = async () => {
@@ -22,51 +23,46 @@ function App() {
   if (!movieData) return <p>Loading...</p>;
 
   const uniqueImages = movieData.images.backdrops
-    .filter((image, index, self) => self.findIndex(img => img.file_path === image.file_path) === index)
-    .slice(0, 5);
+    .filter((image, index, self) => self.findIndex(img => img.file_path === image.file_path) === index);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % uniqueImages.length);
+  };
+
+  const handlePreviousImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + uniqueImages.length) % uniqueImages.length);
+  };
 
   return (
     <div className="App">
-      {/* Hero Section */}
-      <section className="hero" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData.backdrop_path})` }}>
-        <div className="hero-content">
-          <h1>{movieData.title}</h1>
-          <p>A Journey Through Space and Time</p>
-          <button className="cta-button">Explore More</button>
-        </div>
-      </section>
+      <header className="App-header">
+        <h1>{movieData.title}</h1>
+      </header>
 
-      {/* Overview Section */}
-      <section className="overview">
-        <div className="movie-poster">
+      <div className="movie-details">
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
+          alt={movieData.title}
+        />
+        <p>{movieData.overview}</p>
+        <p className="release-date">Release Date: {movieData.release_date}</p>
+      </div>
+
+      <div className="view-through-section">
+        <h2>View Through Interstellar</h2>
+        <div className="image-viewer">
           <img
-            src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
-            alt={movieData.title}
+            className="current-image"
+            src={`https://image.tmdb.org/t/p/w500${uniqueImages[currentImageIndex].file_path}`}
+            alt={`Backdrop ${currentImageIndex}`}
           />
-        </div>
-        <div className="movie-info">
-          <h2>About the Movie</h2>
-          <p>{movieData.overview}</p>
-          <p className="release-date">Release Date: {movieData.release_date}</p>
-        </div>
-      </section>
-
-      {/* Space-Time Sections */}
-      <section className="space-time-sections">
-        <h2>Space-Time Exploration</h2>
-        {uniqueImages.map((image, index) => (
-          <div key={index} className="section">
-            <img
-              className="section-image"
-              src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
-              alt={`Backdrop ${index}`}
-            />
-            <p>Scene {index + 1}</p>
+          <div className="image-controls">
+            <button onClick={handlePreviousImage}>Previous</button>
+            <button onClick={handleNextImage}>Next</button>
           </div>
-        ))}
-      </section>
+        </div>
+      </div>
 
-      {/* Footer */}
       <footer className="footer">
         <p>Interstellar - A Journey Through Space and Time</p>
       </footer>
