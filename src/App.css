@@ -14,7 +14,121 @@
   padding: 20px;
 }
 
-/* Movie Details Section */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+}
+
+.navbar nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar nav ul li {
+  margin: 0 10px;
+}
+
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Movie Carousel Styles */
+.movie-carousel {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-container {
+  margin-bottom: 20px;
+}
+
+.dropdown-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.dropdown-container select {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 30%;
+  /* Show 3 items at a time */
+  max-width: 30%;
+  box-sizing: border-box;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 5px solid white;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control.left {
+  left: 10px;
+}
+
+.carousel-control.right {
+  right: 10px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.indicator {
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.indicator.active {
+  opacity: 1;
+}
+
 .movie-details {
   margin: 20px;
   padding: 10px;
@@ -28,46 +142,8 @@
   border-radius: 8px;
 }
 
-/* View Through Section */
-.view-through-section {
-  margin: 20px;
-  padding: 10px;
-}
-
-/* Dropdown Styles */
-.dropdown-container {
-  margin-bottom: 20px;
-}
-
-.dropdown-container label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.dropdown-container select {
-  padding: 5px;
-}
-
-/* Image Viewer */
-.image-viewer {
-  margin: 20px auto;
-  width: 80%;
-  max-width: 600px;
-}
-
-.current-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Image Controls */
-.image-controls {
-  margin-top: 10px;
-}
-
-.image-controls button {
-  margin: 0 5px;
+.release-date {
+  font-weight: bold;
 }
 
 /* Footer Styles */

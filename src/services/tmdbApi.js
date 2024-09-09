@@ -4,22 +4,19 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
-// Function to fetch the movie ID for "Interstellar"
-const fetchMovieId = async () => {
+// Function to fetch movie details by title
+export const fetchMovieDetails = async (movieTitle) => {
     const response = await axios.get(`${BASE_URL}/search/movie`, {
         params: {
             api_key: API_KEY,
-            query: 'Interstellar'
+            query: movieTitle
         }
     });
-    return response.data.results[0]?.id; // Return the movie ID
-};
 
-// Function to fetch Interstellar movie details including images
-export const fetchInterstellarDetails = async () => {
-    const movieId = await fetchMovieId();
-    if (!movieId) throw new Error('Movie ID not found');
+    const movieId = response.data.results[0]?.id;
+    if (!movieId) throw new Error('Movie not found');
 
+    // Fetch full movie details including images
     return axios.get(`${BASE_URL}/movie/${movieId}`, {
         params: {
             api_key: API_KEY,

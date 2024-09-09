@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Disney:wght@400;700&display=swap');
+
+.header {
+    background-color: #0f0f0f;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-title {
+    font-family: 'Disney', sans-serif;
+    font-size: 2rem;
+    margin-right: 20px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-list li {
+    margin: 0 10px;
+}
+
+.nav-list a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.nav-list a:hover {
+    text-decoration: underline;
+}
