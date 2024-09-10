@@ -1,10 +1,12 @@
-/* Dropdown container */
+/* Dropdown Container */
 .dropdown-container {
     margin: 20px auto;
     text-align: center;
+    width: 90%;
+    max-width: 500px;
 }
 
-/* Dropdown styles */
+/* Dropdown Styles */
 .dropdown-container select {
     padding: 10px;
     font-size: 1rem;
@@ -13,11 +15,30 @@
     background-color: #020711;
     color: #fff;
     cursor: pointer;
+    width: 100%;
 }
 
+/* Label Styles */
 .dropdown-container label {
     display: block;
     margin-bottom: 10px;
     font-size: 1.2rem;
     color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dropdown-container {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .dropdown-container select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .dropdown-container label {
+        font-size: 1rem;
+    }
 }

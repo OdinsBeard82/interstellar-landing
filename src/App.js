@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Carousel from './components/Carousel';
+import Indicators from './components/Indicators'; // Import the new Indicators component
 import MovieContainer from './components/MovieContainer';
 import MovieTrailers from './components/MovieTrailers';
 import Dropdown from './components/Dropdown';
 import MovieDetails from './components/MovieDetails';
-import Footer from './components/Footer'; // Import Footer
+import Footer from './components/Footer';
 import { fetchMovieDetails } from './services/tmdbApi';
 import './App.css';
 
@@ -31,7 +32,12 @@ const App = () => {
     { title: 'The Fifth Element', className: 'fifth-element' },
     { title: 'Ex Machina', className: 'ex-machina' },
     { title: 'Her', className: 'her' },
+    { title: 'Minority Report', className: 'minority-report' },
+    { title: 'Gattaca', className: 'gattaca' },
+    { title: 'Total Recall', className: 'total-recall' }, // New movie
   ], []);
+
+
 
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
@@ -83,17 +89,24 @@ const App = () => {
         handleNextSlide={handleNextSlide}
         setCurrentSlide={setCurrentSlide}
       />
+      <Indicators
+        movies={movies}
+        currentSlide={currentSlide}
+        setCurrentSlide={setCurrentSlide}
+      />
+      <MovieContainer allMovies={movieListForContainer} />
+      <MovieTrailers allMovies={movieListForTrailers} />
       <Dropdown
         movieOptions={movieListForContainer.map(movie => movie.title)}
         selectedMovie={selectedMovie}
         handleMovieChange={handleMovieChange}
       />
       <MovieDetails selectedMovieData={selectedMovieData} />
-      <MovieContainer allMovies={movieListForContainer} />
-      <MovieTrailers allMovies={movieListForTrailers} />
-      <Footer /> {/* Add Footer component */}
+
+      <Footer />
     </div>
   );
 };
 
 export default App;
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import './MovieDetails.css';
 
 const MovieDetails = ({ selectedMovieData }) => {
     return (

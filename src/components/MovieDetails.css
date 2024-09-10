@@ -1,0 +1,69 @@
+/* Movie Details */
+.movie-details {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #040e21;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.movie-details img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    border: 5px solid #fff;
+}
+
+.movie-details h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.movie-details p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.release-date {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Dropdown Container */
+.dropdown-container {
+    margin-bottom: 20px;
+}
+
+/* Dropdown Styles */
+.dropdown-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.dropdown-container select {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .movie-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .movie-details p {
+        font-size: 1rem;
+    }
+
+    .dropdown-container label {
+        font-size: 1rem;
+    }
+
+    .dropdown-container select {
+        font-size: 0.9rem;
+    }
+}

@@ -1,4 +1,4 @@
-/* Indicators.css */
+/* Indicators Styles */
 .carousel-indicators {
     display: flex;
     justify-content: center;
@@ -9,13 +9,30 @@
     background-color: white;
     border: none;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    margin: 0 7px;
     cursor: pointer;
     opacity: 0.5;
 }
 
 .indicator.active {
     opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .indicator {
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .indicator {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+    }
 }

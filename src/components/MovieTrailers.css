@@ -10,14 +10,20 @@
 
 /* Style for each trailer item */
 .trailer-item {
-    flex: 1 1 calc(33% - 20px);
+    flex: 1 1 calc(25% - 20px);
+    /* Adjust width for 4 items per row */
     box-sizing: border-box;
     text-align: center;
     background-color: #04060a;
     color: #fff;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 8px;
+    /* Reduced border radius for consistency */
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    /* Limit maximum width */
+    height: auto;
+    /* Adjust height automatically */
 }
 
 /* Style for trailer image */
@@ -29,6 +35,32 @@
 }
 
 .trailer-item h3 {
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 10px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .trailer-item {
+        flex: 1 1 calc(50% - 10px);
+        /* Adjust width for 2 items per row on small screens */
+        padding: 5px;
+    }
+
+    .trailer-item h3 {
+        font-size: 0.9em;
+    }
+
+    /* Hide the last item if it is alone */
+    .trailers-container::after {
+        content: "";
+        display: block;
+        flex: 1 1 100%;
+        width: 0;
+        height: 0;
+    }
+
+    .trailers-container> :last-child {
+        display: none;
+    }
 }

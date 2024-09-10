@@ -1,4 +1,5 @@
 import React from 'react';
+import './Indicators.css';
 
 const Indicators = ({ movies, currentSlide, setCurrentSlide }) => {
     return (

@@ -1,20 +1,19 @@
-/* Movies container */
+/* Movies Container */
 .movies-container {
     display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    flex-wrap: wrap;
     padding: 20px;
     margin: 20px auto;
     justify-content: flex-start;
     transition: transform 0.5s ease;
+    overflow: hidden;
 }
 
-/* Movie items with fixed width for 5 per row */
+/* Movie Items */
 .movie-item {
     color: #fff;
     border-radius: 8px;
     padding: 20px;
-    width: calc(20% - 10px);
     height: 200px;
     box-sizing: border-box;
     text-align: center;
@@ -25,14 +24,67 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin: 0 10px 10px 0;
 }
 
-.movie-item:hover {
-    transform: scale(1.05);
+/* Hide excess items */
+.hide-item {
+    display: none;
 }
 
-/* Movie-specific text styles */
+/* Movie-Specific Text Styles */
+.movie-item p {
+    font-size: 1em;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1200px) {
+    .movie-item {
+        width: calc(20% - 10px);
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 900px) {
+    .movie-item {
+        width: calc(25% - 10px);
+    }
+
+    .movie-item:nth-child(n+5) {
+        display: none;
+    }
+}
+
+@media (max-width: 899px) and (min-width: 600px) {
+    .movie-item {
+        width: calc(33.33% - 10px);
+    }
+
+    .movie-item:nth-child(n+4) {
+        display: none;
+    }
+}
+
+@media (max-width: 599px) and (min-width: 400px) {
+    .movie-item {
+        width: calc(50% - 10px);
+    }
+
+    .movie-item:nth-child(n+3) {
+        display: none;
+    }
+}
+
+@media (max-width: 399px) {
+    .movie-item {
+        width: calc(100% - 10px);
+    }
+
+    .movie-item:nth-child(n+2) {
+        display: none;
+    }
+}
+
+/* Movie-Specific Styles */
 .movie-item.interstellar p {
     font-family: 'Times New Roman', serif;
     color: #f0f0f0;
