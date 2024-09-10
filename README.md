@@ -1,9 +1,10 @@
-
-![Project Screenshot](./assets/screenshot.png)
-
 ![Project Screenshot](./assets/screenshot.png)
 
 # Sci-Fi Movie Landing Page
+
+## Additional Information
+
+- **Live Demo**: [Netlify Deployment](https://sci-fi-moive-landing-page.netlify.app/)
 
 ## Overview
 
@@ -30,11 +31,4 @@ This project is a responsive landing page that dynamically fetches and displays 
 ### Prerequisites
 
 - Node.js and npm installed on your machine.
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/OdinsBeard82/interstellar-landing.git
-   cd interstellar-landing
 
