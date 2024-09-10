@@ -1,7 +1,5 @@
 
-![Uploading Screenshot 2024-09-10 at 16.16.29.png…]()
-
-
+![Project Screenshot](./assets/screenshot.png)
 
 # Sci-Fi Movie Landing Page
 
