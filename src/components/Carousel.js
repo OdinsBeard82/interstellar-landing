@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Carousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide, setCurrentSlide }) => {
+const Carousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide }) => {
     return (
         <div className="carousel-container">
             <button className="carousel-control left" onClick={handlePrevSlide}>◀</button>
@@ -24,3 +24,4 @@ const Carousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide, setC
 };
 
 export default Carousel;
+

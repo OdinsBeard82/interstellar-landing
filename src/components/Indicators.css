@@ -1,0 +1,21 @@
+/* Indicators.css */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.indicator.active {
+    opacity: 1;
+}
