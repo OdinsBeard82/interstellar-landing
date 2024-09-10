@@ -46,6 +46,14 @@
   margin: 0;
 }
 
+/* Use this for sliding effect */
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* Smooth slide transition */
+  width: 100%;
+}
+
 .dropdown-container {
   margin-bottom: 20px;
 }
@@ -71,12 +79,9 @@
   border-radius: 8px;
 }
 
-.carousel {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-}
 
+
+/* Carousel Item Styles */
 .carousel-item {
   flex: 0 0 100%;
   box-sizing: border-box;
@@ -94,6 +99,7 @@
   border: 5px solid white;
 }
 
+/* Control buttons */
 .carousel-control {
   position: absolute;
   top: 50%;
@@ -115,6 +121,7 @@
   right: 10px;
 }
 
+/* Indicators */
 .carousel-indicators {
   display: flex;
   justify-content: center;
@@ -136,6 +143,7 @@
   opacity: 1;
 }
 
+/* Movie Details Styles */
 .movie-details {
   margin: 20px;
   padding: 10px;
