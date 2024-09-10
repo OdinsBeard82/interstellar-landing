@@ -145,16 +145,19 @@
 
 /* Movie Details Styles */
 .movie-details {
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
-  border: 1px solid #fff;
   border-radius: 8px;
+  background-color: #040c19;
+
 }
 
 .movie-details img {
-  width: 100%;
+  width: 40%;
   height: auto;
   border-radius: 8px;
+  border: 5px solid #fff;
+
 }
 
 .release-date {

@@ -1,0 +1,132 @@
+/* Movies container */
+.movies-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding: 20px;
+    margin: 20px auto;
+    justify-content: flex-start;
+    transition: transform 0.5s ease;
+}
+
+/* Movie items with fixed width for 5 per row */
+.movie-item {
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(20% - 10px);
+    height: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    background-color: #020711;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
+}
+
+/* Movie-specific text styles */
+.movie-item.interstellar p {
+    font-family: 'Times New Roman', serif;
+    color: #f0f0f0;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+}
+
+.movie-item.arrival p {
+    font-family: 'Arial', sans-serif;
+    color: #b0b0b0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.blade-runner p {
+    font-family: 'Courier New', monospace;
+    color: #ff3c3c;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+}
+
+.space-odyssey p {
+    font-family: 'Georgia', serif;
+    color: #e0e0e0;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.matrix p {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+}
+
+.inception p {
+    font-family: 'Arial Black', sans-serif;
+    color: #b22222;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+
+.starship-troopers p {
+    font-family: 'Impact', sans-serif;
+    color: #ffd700;
+    font-size: 1.1em;
+}
+
+.back-to-the-future p {
+    font-family: 'Arial', sans-serif;
+    color: #ff9500;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.looper p {
+    font-family: 'Helvetica', sans-serif;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+.martian p {
+    font-family: 'Verdana', sans-serif;
+    color: #ff4500;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+
+.dune p {
+    font-family: 'Garamond', serif;
+    color: #e0e0e0;
+    font-size: 1.2em;
+}
+
+.et p {
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #87cefa;
+    font-size: 1.2em;
+}
+
+.fifth-element p {
+    font-family: 'Tahoma', sans-serif;
+    color: #ffdd00;
+    font-size: 1.3em;
+}
+
+.ex-machina p {
+    font-family: 'Roboto', sans-serif;
+    color: #cccccc;
+    font-size: 1.1em;
+}
+
+.her p {
+    font-family: 'Arial', sans-serif;
+    color: #ff69b4;
+    font-size: 1.2em;
+}

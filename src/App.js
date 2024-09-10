@@ -1,41 +1,46 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { fetchMovieDetails } from './services/tmdbApi';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Carousel from './components/Carousel';
-import Dropdown from './components/Dropdown';
-import Indicators from './components/Indicators';
-import MovieDetails from './components/MovieDetails';
+import MovieContainer from './components/MovieContainer';
+import MovieTrailers from './components/MovieTrailers';
+import { fetchMovieDetails } from './services/tmdbApi';
 import './App.css';
 
-function App() {
+const App = () => {
   const [error, setError] = useState(null);
-  const [selectedMovie, setSelectedMovie] = useState('Interstellar');
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const movieOptions = useMemo(() => [
-    'Interstellar',
-    'Arrival',
-    'Blade Runner',
-    '2001: A Space Odyssey',
-    'The Matrix',
-    'Inception',
-    'Starship Troopers',
-    'Back to the Future',
-    'Looper',
-    'The Martian',
-    'Dune',
-    'E.T.',
-    'The Fifth Element',
-    'Ex Machina',
-    'Her',
-    'Edge of Tomorrow'
+  const movieListForContainer = useMemo(() => [
+    { title: 'Interstellar', className: 'interstellar' },
+    { title: 'Arrival', className: 'arrival' },
+    { title: 'Blade Runner', className: 'blade-runner' },
+    { title: '2001: A Space Odyssey', className: 'space-odyssey' },
+    { title: 'The Matrix', className: 'matrix' },
+    { title: 'Inception', className: 'inception' },
+    { title: 'Starship Troopers', className: 'starship-troopers' },
+    { title: 'Back to the Future', className: 'back-to-the-future' },
+    { title: 'Looper', className: 'looper' },
+    { title: 'The Martian', className: 'martian' },
+    { title: 'Dune', className: 'dune' },
+    { title: 'E.T.', className: 'et' },
+    { title: 'The Fifth Element', className: 'fifth-element' },
+    { title: 'Ex Machina', className: 'ex-machina' },
+    { title: 'Her', className: 'her' },
   ], []);
+
+  const movieListForTrailers = useMemo(() => {
+    return movies.map(movie => ({
+      title: movie.title,
+      poster_path: movie.images?.posters[0]?.file_path || '/placeholder-image.jpg', // Fallback image
+    }));
+  }, [movies]);
+
 
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        const promises = movieOptions.map(movie => fetchMovieDetails(movie));
+        const promises = movieListForContainer.map(movie => fetchMovieDetails(movie.title));
         const responses = await Promise.all(promises);
         const movieDetails = responses.map(response => response.data);
         setMovies(movieDetails);
@@ -44,18 +49,11 @@ function App() {
       }
     };
     getMoviesData();
-  }, [movieOptions]);
+  }, [movieListForContainer]);
+
 
   if (error) return <p>{error}</p>;
   if (movies.length === 0) return <p>Loading...</p>;
-
-  const selectedMovieData = movies.find(movie => movie.title === selectedMovie);
-
-  if (!selectedMovieData) return <p>Movie not found.</p>;
-
-  const handleMovieChange = (event) => {
-    setSelectedMovie(event.target.value);
-  };
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
@@ -75,20 +73,8 @@ function App() {
         handleNextSlide={handleNextSlide}
         setCurrentSlide={setCurrentSlide}
       />
-      <Indicators
-        movies={movies}
-        currentSlide={currentSlide}
-        setCurrentSlide={setCurrentSlide}
-      />
-      <Dropdown
-        movieOptions={movieOptions}
-        selectedMovie={selectedMovie}
-        handleMovieChange={handleMovieChange}
-      />
-      <MovieDetails selectedMovieData={selectedMovieData} />
-      <footer className="footer">
-        <p>© 2024 Sci-Fi Movie Showcase. All Rights Reserved.</p>
-      </footer>
+      <MovieContainer allMovies={movieListForContainer} />
+      <MovieTrailers allMovies={movieListForTrailers} />
     </div>
   );
 }
