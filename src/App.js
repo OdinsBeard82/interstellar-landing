@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Carousel from './components/Carousel';
 import MovieContainer from './components/MovieContainer';
 import MovieTrailers from './components/MovieTrailers';
+import Dropdown from './components/Dropdown'; // Import Dropdown
+import MovieDetails from './components/MovieDetails'; // Import MovieDetails
 import { fetchMovieDetails } from './services/tmdbApi';
 import './App.css';
 
@@ -10,6 +12,7 @@ const App = () => {
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedMovie, setSelectedMovie] = useState('Interstellar'); // State for selected movie
 
   const movieListForContainer = useMemo(() => [
     { title: 'Interstellar', className: 'interstellar' },
@@ -36,7 +39,6 @@ const App = () => {
     }));
   }, [movies]);
 
-
   useEffect(() => {
     const getMoviesData = async () => {
       try {
@@ -51,9 +53,16 @@ const App = () => {
     getMoviesData();
   }, [movieListForContainer]);
 
-
   if (error) return <p>{error}</p>;
   if (movies.length === 0) return <p>Loading...</p>;
+
+  const selectedMovieData = movies.find(movie => movie.title === selectedMovie);
+
+  if (!selectedMovieData) return <p>Movie not found.</p>;
+
+  const handleMovieChange = (event) => {
+    setSelectedMovie(event.target.value);
+  };
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
@@ -75,8 +84,14 @@ const App = () => {
       />
       <MovieContainer allMovies={movieListForContainer} />
       <MovieTrailers allMovies={movieListForTrailers} />
+      <Dropdown
+        movieOptions={movieListForContainer.map(movie => movie.title)}
+        selectedMovie={selectedMovie}
+        handleMovieChange={handleMovieChange}
+      />
+      <MovieDetails selectedMovieData={selectedMovieData} />
     </div>
   );
-}
+};
 
 export default App;
