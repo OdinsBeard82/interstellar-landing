@@ -1,9 +1,11 @@
 import React from 'react';
 import './MovieCarousel.css';
 
+// MovieCarousel component for displaying movies in a carousel
 const MovieCarousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide, setCurrentSlide, selectedMovieData, selectedMovie, handleMovieChange, movieOptions }) => {
     return (
         <section className="movie-carousel">
+            {/* Dropdown for selecting a movie */}
             <div className="dropdown-container">
                 <label htmlFor="movie-select">Choose a Sci-Fi Movie:</label>
                 <select id="movie-select" value={selectedMovie} onChange={handleMovieChange}>
@@ -15,6 +17,7 @@ const MovieCarousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide,
                 </select>
             </div>
 
+            {/* Carousel for displaying movie posters */}
             <div className="carousel-container">
                 <button className="carousel-control left" onClick={handlePrevSlide}>◀</button>
                 <div className="carousel">
@@ -34,6 +37,7 @@ const MovieCarousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide,
                 <button className="carousel-control right" onClick={handleNextSlide}>▶</button>
             </div>
 
+            {/* Indicators for navigating through carousel slides */}
             <div className="carousel-indicators">
                 {movies.map((_, index) => (
                     <button
@@ -44,6 +48,7 @@ const MovieCarousel = ({ movies, currentSlide, handlePrevSlide, handleNextSlide,
                 ))}
             </div>
 
+            {/* Details of the currently selected movie */}
             <div className="movie-details">
                 <img
                     src={`https://image.tmdb.org/t/p/w500${selectedMovieData.poster_path}`}

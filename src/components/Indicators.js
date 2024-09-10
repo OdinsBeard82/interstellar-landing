@@ -4,6 +4,7 @@ import './Indicators.css';
 const Indicators = ({ movies, currentSlide, setCurrentSlide }) => {
     return (
         <div className="carousel-indicators">
+            {/* Create a button for each movie slide */}
             {movies.map((_, index) => (
                 <button
                     key={index}

@@ -1,4 +1,3 @@
-/* Header Container */
 .header {
     background-color: #020812;
     padding: 10px 20px;
@@ -8,7 +7,6 @@
     align-items: center;
 }
 
-/* Header Content */
 .header-content {
     display: flex;
     align-items: center;
@@ -18,14 +16,13 @@
     margin: 0 auto;
 }
 
-/* Header Title */
 .header-title {
     font-family: 'Disney', sans-serif;
     font-size: 1.8rem;
     margin-right: 20px;
 }
 
-/* Navigation List */
+/* Navigation List Styling */
 .nav-list {
     list-style: none;
     padding: 0;
@@ -37,6 +34,7 @@
     margin: 0 10px;
 }
 
+/* Navigation Links Styling */
 .nav-list a {
     color: #ffffff;
     text-decoration: none;
@@ -44,11 +42,12 @@
     font-weight: 500;
 }
 
+/* Navigation Links Hover Effect */
 .nav-list a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Tablets and Larger Screens */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
@@ -70,6 +69,7 @@
     }
 }
 
+/* Responsive Adjustments for Mobile Screens */
 @media (max-width: 480px) {
     .header-title {
         font-size: 1.2rem;

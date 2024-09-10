@@ -1,10 +1,11 @@
-/* Indicators Styles */
+/* Indicators Container */
 .carousel-indicators {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
+/* Individual Indicator Style */
 .indicator {
     background-color: white;
     border: none;
@@ -16,11 +17,12 @@
     opacity: 0.5;
 }
 
+/* Active Indicator Style */
 .indicator.active {
     opacity: 1;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Tablets and Larger Screens */
 @media (max-width: 768px) {
     .indicator {
         width: 12px;
@@ -29,6 +31,7 @@
     }
 }
 
+/* Responsive Adjustments for Mobile Screens */
 @media (max-width: 480px) {
     .indicator {
         width: 10px;

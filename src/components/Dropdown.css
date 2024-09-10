@@ -1,4 +1,3 @@
-/* Dropdown Container */
 .dropdown-container {
     margin: 20px auto;
     text-align: center;
@@ -6,7 +5,7 @@
     max-width: 500px;
 }
 
-/* Dropdown Styles */
+/* Dropdown Select */
 .dropdown-container select {
     padding: 10px;
     font-size: 1rem;
@@ -18,7 +17,6 @@
     width: 100%;
 }
 
-/* Label Styles */
 .dropdown-container label {
     display: block;
     margin-bottom: 10px;

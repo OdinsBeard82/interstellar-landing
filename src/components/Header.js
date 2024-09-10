@@ -5,7 +5,9 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header-content">
+                {/* Main title of the header */}
                 <h1 className="header-title">Sci-Fi</h1>
+                {/* Navigation menu */}
                 <nav>
                     <ul className="nav-list">
                         <li><a href="#home">Home</a></li>
