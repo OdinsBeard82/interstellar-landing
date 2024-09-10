@@ -3,8 +3,9 @@ import Header from './components/Header';
 import Carousel from './components/Carousel';
 import MovieContainer from './components/MovieContainer';
 import MovieTrailers from './components/MovieTrailers';
-import Dropdown from './components/Dropdown'; // Import Dropdown
-import MovieDetails from './components/MovieDetails'; // Import MovieDetails
+import Dropdown from './components/Dropdown';
+import MovieDetails from './components/MovieDetails';
+import Footer from './components/Footer'; // Import Footer
 import { fetchMovieDetails } from './services/tmdbApi';
 import './App.css';
 
@@ -12,7 +13,7 @@ const App = () => {
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedMovie, setSelectedMovie] = useState('Interstellar'); // State for selected movie
+  const [selectedMovie, setSelectedMovie] = useState('Interstellar');
 
   const movieListForContainer = useMemo(() => [
     { title: 'Interstellar', className: 'interstellar' },
@@ -35,7 +36,7 @@ const App = () => {
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
-      poster_path: movie.images?.posters[0]?.file_path || '/placeholder-image.jpg', // Fallback image
+      poster_path: movie.images?.posters[0]?.file_path || '/placeholder-image.jpg',
     }));
   }, [movies]);
 
@@ -82,14 +83,15 @@ const App = () => {
         handleNextSlide={handleNextSlide}
         setCurrentSlide={setCurrentSlide}
       />
-      <MovieContainer allMovies={movieListForContainer} />
-      <MovieTrailers allMovies={movieListForTrailers} />
       <Dropdown
         movieOptions={movieListForContainer.map(movie => movie.title)}
         selectedMovie={selectedMovie}
         handleMovieChange={handleMovieChange}
       />
       <MovieDetails selectedMovieData={selectedMovieData} />
+      <MovieContainer allMovies={movieListForContainer} />
+      <MovieTrailers allMovies={movieListForTrailers} />
+      <Footer /> {/* Add Footer component */}
     </div>
   );
 };

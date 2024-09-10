@@ -1,22 +1,13 @@
 import React from 'react';
-import './Header.css';
+import './Footer.css';
 
-const Header = () => {
+const Footer = () => {
     return (
-        <header className="App-header">
-            <div className="navbar">
-                <img src="https://your-logo-url.png" alt="Logo" className="logo" />
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#movies">Movies</a></li>
-                        <li><a href="#series">Series</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <footer className="footer">
+            <p>© 2024 Sci-Fi Movie Showcase. All Rights Reserved.</p>
+        </footer>
     );
-}
+};
 
-export default Header;
+export default Footer;
+
