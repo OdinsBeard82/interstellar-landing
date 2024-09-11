@@ -34,8 +34,6 @@
 /* Responsive Adjustments for Mobile Screens */
 @media (max-width: 480px) {
     .indicator {
-        width: 10px;
-        height: 10px;
-        margin: 0 3px;
+        display: none;
     }
 }
