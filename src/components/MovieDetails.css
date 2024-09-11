@@ -4,8 +4,9 @@
     background-color: #040e21;
     border-radius: 8px;
     text-align: center;
-    max-width: 800px;
-    width: 100%;
+    max-width: 100%;
+    width: 90%;
+    box-sizing: border-box;
 }
 
 .movie-details img {
@@ -14,6 +15,8 @@
     height: auto;
     border-radius: 8px;
     border: 5px solid #fff;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Movie Details Heading */
@@ -34,24 +37,12 @@
     margin-top: 10px;
 }
 
-.dropdown-container {
-    margin-bottom: 20px;
-}
-
-.dropdown-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-}
-
-/* Dropdown Select */
-.dropdown-container select {
-    padding: 5px;
-    font-size: 1rem;
-}
-
-/* Responsive Adjustments for Movie Details and Dropdown */
+/* Responsive Adjustments for Movie Details */
 @media (max-width: 768px) {
+    .movie-details {
+        padding: 15px;
+    }
+
     .movie-details h2 {
         font-size: 1.5rem;
     }
@@ -59,12 +50,23 @@
     .movie-details p {
         font-size: 1rem;
     }
+}
 
-    .dropdown-container label {
-        font-size: 1rem;
+@media (max-width: 480px) {
+    .movie-details {
+        padding: 10px;
+        margin: 10px auto;
     }
 
-    .dropdown-container select {
+    .movie-details img {
+        max-width: 90%;
+    }
+
+    .movie-details h2 {
+        font-size: 1.2rem;
+    }
+
+    .movie-details p {
         font-size: 0.9rem;
     }
 }
