@@ -36,17 +36,20 @@ const App = () => {
     { title: 'Total Recall', className: 'total-recall' },
   ], []);
 
+  // Update movieListForTrailers to include full TMDb poster URL
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
-      poster_path: movie.poster_path || '/placeholder-image.jpg',
+      poster_path: movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : '/placeholder-image.jpg',
     }));
   }, [movies]);
 
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        // ✅ Fetch from your live Render backend
+        // Fetch from live Render backend
         const response = await fetch("https://interstellar-landing.onrender.com/movies/trending");
         if (!response.ok) throw new Error("Failed to fetch movies from backend");
         const data = await response.json();
