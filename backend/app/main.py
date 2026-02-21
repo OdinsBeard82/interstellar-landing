@@ -12,7 +12,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Use the list above
+    allow_origins=["https://sci-fi-movie-landing-page.netlify.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
