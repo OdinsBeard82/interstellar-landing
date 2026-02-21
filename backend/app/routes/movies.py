@@ -9,9 +9,15 @@ router = APIRouter(prefix="/movies", tags=["Movies"])
 
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
-@router.get("/trending")
-def get_trending_movies():
-    url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={TMDB_API_KEY}"
+@router.get("/scifi")
+def get_scifi_movies():
+    url = (
+        f"https://api.themoviedb.org/3/discover/movie"
+        f"?api_key={TMDB_API_KEY}"
+        f"&with_genres=878"
+        f"&sort_by=popularity.desc"
+    )
+
     response = requests.get(url)
 
     if response.status_code != 200:
@@ -19,13 +25,13 @@ def get_trending_movies():
 
     data = response.json()
 
-    # Cleaned response for frontend
     simplified = [
         {
             "id": movie["id"],
             "title": movie["title"],
             "poster_path": movie["poster_path"],
-            "release_date": movie["release_date"]
+            "release_date": movie["release_date"],
+            "overview": movie.get("overview", "")
         }
         for movie in data.get("results", [])
     ]
