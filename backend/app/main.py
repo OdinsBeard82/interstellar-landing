@@ -7,12 +7,12 @@ app = FastAPI(title="Interstellar Backend API")
 # CORS configuration — allow frontend URLs
 origins = [
     "http://localhost:3000",                        # Local frontend
-    "https://sci-fi-movie-landing-page.netlify.app",  # Netlify frontend
+    "https://sci-fi-movie-landing-page.netlify.app"  # Netlify frontend
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://sci-fi-movie-landing-page.netlify.app"],
+    allow_origins=origins,  # use the list defined above
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
