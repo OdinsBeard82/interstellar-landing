@@ -13,30 +13,36 @@ const App = () => {
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedMovie, setSelectedMovie] = useState('Interstellar');
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const movieListForContainer = useMemo(() => [
-    { title: 'Interstellar', className: 'interstellar' },
-    { title: 'Arrival', className: 'arrival' },
-    { title: 'Blade Runner', className: 'blade-runner' },
-    { title: '2001: A Space Odyssey', className: 'space-odyssey' },
-    { title: 'The Matrix', className: 'matrix' },
-    { title: 'Inception', className: 'inception' },
-    { title: 'Starship Troopers', className: 'starship-troopers' },
-    { title: 'Back to the Future', className: 'back-to-the-future' },
-    { title: 'Looper', className: 'looper' },
-    { title: 'The Martian', className: 'martian' },
-    { title: 'Dune', className: 'dune' },
-    { title: 'E.T.', className: 'et' },
-    { title: 'The Fifth Element', className: 'fifth-element' },
-    { title: 'Ex Machina', className: 'ex-machina' },
-    { title: 'Her', className: 'her' },
-    { title: 'Minority Report', className: 'minority-report' },
-    { title: 'Gattaca', className: 'gattaca' },
-    { title: 'Total Recall', className: 'total-recall' },
-  ], []);
+  // Fetch trending movies from backend
+  useEffect(() => {
+    const getMoviesData = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/movies/trending");
 
-  // Update movieListForTrailers to include full TMDb poster URL
+        if (!response.ok) {
+          throw new Error("Failed to fetch movies from backend");
+        }
+
+        const data = await response.json();
+        setMovies(data);
+
+        // Auto-select first movie
+        if (data.length > 0) {
+          setSelectedMovie(data[0].title);
+        }
+
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch movie data.");
+      }
+    };
+
+    getMoviesData();
+  }, []);
+
+  // Prepare trailer data
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
@@ -46,43 +52,35 @@ const App = () => {
     }));
   }, [movies]);
 
-  useEffect(() => {
-    const getMoviesData = async () => {
-      try {
-        // Fetch from live Render backend
-        const response = await fetch("https://interstellar-landing.onrender.com/movies/trending");
-        if (!response.ok) throw new Error("Failed to fetch movies from backend");
-        const data = await response.json();
-        setMovies(data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to fetch movie data.");
-      }
-    };
-    getMoviesData();
-  }, []);
-
   if (error) return <p>{error}</p>;
-  if (movies.length === 0) return <p>Loading...</p>;
+  if (movies.length === 0 || !selectedMovie) return <p>Loading...</p>;
 
-  const selectedMovieData = movies.find(movie => movie.title === selectedMovie);
-  if (!selectedMovieData) return <p>Movie not found.</p>;
+  const selectedMovieData = movies.find(
+    movie => movie.title === selectedMovie
+  );
+
+  if (!selectedMovieData) return <p>Loading movie details...</p>;
 
   const handleMovieChange = (event) => {
     setSelectedMovie(event.target.value);
   };
 
   const handlePrevSlide = () => {
-    setCurrentSlide((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
+    setCurrentSlide((prevIndex) =>
+      (prevIndex - 1 + movies.length) % movies.length
+    );
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((prevIndex) => (prevIndex + 1) % movies.length);
+    setCurrentSlide((prevIndex) =>
+      (prevIndex + 1) % movies.length
+    );
   };
 
   return (
     <div className="App">
       <Header />
+
       <Carousel
         movies={movies}
         currentSlide={currentSlide}
@@ -90,19 +88,23 @@ const App = () => {
         handleNextSlide={handleNextSlide}
         setCurrentSlide={setCurrentSlide}
       />
+
       <Indicators
         movies={movies}
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
       />
-      <MovieContainer allMovies={movieListForContainer} />
+
       <MovieTrailers allMovies={movieListForTrailers} />
+
       <Dropdown
-        movieOptions={movieListForContainer.map(movie => movie.title)}
+        movieOptions={movies.map(movie => movie.title)}
         selectedMovie={selectedMovie}
         handleMovieChange={handleMovieChange}
       />
+
       <MovieDetails selectedMovieData={selectedMovieData} />
+
       <Footer />
     </div>
   );
