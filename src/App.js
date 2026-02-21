@@ -15,34 +15,32 @@ const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // Fetch trending movies from backend
+  // Use environment variable for backend API URL
+  const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+
+  // Fetch Sci-Fi movies from backend
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/movies/scifi");
-
+        const response = await fetch(`${API_URL}/movies/scifi`);
         if (!response.ok) {
           throw new Error("Failed to fetch movies from backend");
         }
-
         const data = await response.json();
         setMovies(data);
 
         // Auto-select first movie
-        if (data.length > 0) {
-          setSelectedMovie(data[0].title);
-        }
+        if (data.length > 0) setSelectedMovie(data[0].title);
 
       } catch (err) {
         console.error(err);
         setError("Failed to fetch movie data.");
       }
     };
-
     getMoviesData();
-  }, []);
+  }, [API_URL]);
 
-  // Prepare trailer data
+  // Prepare trailer data with full TMDb poster URLs
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
@@ -52,30 +50,26 @@ const App = () => {
     }));
   }, [movies]);
 
+  // Prepare MovieContainer list with safe CSS classNames
+  const movieListForContainer = useMemo(() => {
+    return movies.map(movie => ({
+      title: movie.title,
+      className: movie.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+    }));
+  }, [movies]);
+
   if (error) return <p>{error}</p>;
   if (movies.length === 0 || !selectedMovie) return <p>Loading...</p>;
 
-  const selectedMovieData = movies.find(
-    movie => movie.title === selectedMovie
-  );
-
+  const selectedMovieData = movies.find(movie => movie.title === selectedMovie);
   if (!selectedMovieData) return <p>Loading movie details...</p>;
 
-  const handleMovieChange = (event) => {
-    setSelectedMovie(event.target.value);
-  };
+  const handleMovieChange = (event) => setSelectedMovie(event.target.value);
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((prevIndex) =>
-      (prevIndex - 1 + movies.length) % movies.length
-    );
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prevIndex) =>
-      (prevIndex + 1) % movies.length
-    );
-  };
+  const handlePrevSlide = () =>
+    setCurrentSlide((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
+  const handleNextSlide = () =>
+    setCurrentSlide((prevIndex) => (prevIndex + 1) % movies.length);
 
   return (
     <div className="App">
@@ -94,6 +88,9 @@ const App = () => {
         currentSlide={currentSlide}
         setCurrentSlide={setCurrentSlide}
       />
+
+      {/* MovieContainer now properly included */}
+      <MovieContainer allMovies={movieListForContainer} />
 
       <MovieTrailers allMovies={movieListForTrailers} />
 
