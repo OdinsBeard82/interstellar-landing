@@ -15,17 +15,16 @@ const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // Use environment variable for backend API URL
-  const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+  // Use backend URL from env
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Fetch Sci-Fi movies from backend
   useEffect(() => {
     const getMoviesData = async () => {
       try {
         const response = await fetch(`${API_URL}/movies/scifi`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch movies from backend");
-        }
+        if (!response.ok) throw new Error("Failed to fetch movies from backend");
+
         const data = await response.json();
         setMovies(data);
 
@@ -40,7 +39,7 @@ const App = () => {
     getMoviesData();
   }, [API_URL]);
 
-  // Prepare trailer data with full TMDb poster URLs
+  // Prepare trailer data with TMDb full poster URLs
   const movieListForTrailers = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
@@ -50,7 +49,7 @@ const App = () => {
     }));
   }, [movies]);
 
-  // Prepare MovieContainer list with safe CSS classNames
+  // MovieContainer with safe CSS classNames
   const movieListForContainer = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
@@ -65,7 +64,6 @@ const App = () => {
   if (!selectedMovieData) return <p>Loading movie details...</p>;
 
   const handleMovieChange = (event) => setSelectedMovie(event.target.value);
-
   const handlePrevSlide = () =>
     setCurrentSlide((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
   const handleNextSlide = () =>
@@ -89,7 +87,6 @@ const App = () => {
         setCurrentSlide={setCurrentSlide}
       />
 
-      {/* MovieContainer now properly included */}
       <MovieContainer allMovies={movieListForContainer} />
 
       <MovieTrailers allMovies={movieListForTrailers} />
