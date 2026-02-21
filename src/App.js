@@ -46,7 +46,8 @@ const App = () => {
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/movies/trending");
+        // ✅ Fetch from your live Render backend
+        const response = await fetch("https://interstellar-landing.onrender.com/movies/trending");
         if (!response.ok) throw new Error("Failed to fetch movies from backend");
         const data = await response.json();
         setMovies(data);
