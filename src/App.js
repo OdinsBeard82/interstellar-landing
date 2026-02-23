@@ -18,11 +18,11 @@ const App = () => {
   // Use backend URL from Vercel environment variable
   const API_URL = process.env.REACT_APP_API_URL;
 
+  // Fetch movies from Render backend
   useEffect(() => {
     const getMoviesData = async () => {
       try {
-        // Fetch Sci-Fi movies from Render backend
-        const response = await fetch(`${API_URL}/movies/scifi`);
+        const response = await fetch(`${API_URL}/movies/trending`); // <- Correct route
         if (!response.ok) throw new Error("Failed to fetch movies from backend");
 
         const data = await response.json();
@@ -37,7 +37,6 @@ const App = () => {
       }
     };
 
-    // Only fetch if API_URL exists
     if (API_URL) getMoviesData();
   }, [API_URL]);
 
