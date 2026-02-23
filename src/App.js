@@ -15,13 +15,13 @@ const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  // Use backend URL from env
+  // Use backend URL from Vercel environment variable
   const API_URL = process.env.REACT_APP_API_URL;
 
-  // Fetch Sci-Fi movies from backend
   useEffect(() => {
     const getMoviesData = async () => {
       try {
+        // Fetch Sci-Fi movies from Render backend
         const response = await fetch(`${API_URL}/movies/scifi`);
         if (!response.ok) throw new Error("Failed to fetch movies from backend");
 
@@ -36,7 +36,9 @@ const App = () => {
         setError("Failed to fetch movie data.");
       }
     };
-    getMoviesData();
+
+    // Only fetch if API_URL exists
+    if (API_URL) getMoviesData();
   }, [API_URL]);
 
   // Prepare trailer data with TMDb full poster URLs
@@ -49,7 +51,7 @@ const App = () => {
     }));
   }, [movies]);
 
-  // MovieContainer with safe CSS classNames
+  // Prepare MovieContainer with safe CSS class names
   const movieListForContainer = useMemo(() => {
     return movies.map(movie => ({
       title: movie.title,
