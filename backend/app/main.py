@@ -6,8 +6,8 @@ app = FastAPI(title="Interstellar Backend API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # <-- IMPORTANT
-    allow_credentials=False,  # MUST be False when using "*"
+    allow_origins=["*"],   
+    allow_credentials=False,  
     allow_methods=["*"],
     allow_headers=["*"],
 )
