@@ -1,6 +1,6 @@
 ![Project Screenshot](./assets/screenshot.png)
 
-🚀 Sci-Fi Movie Landing Page
+# 🪐 Sci-Fi Movie Landing Page
 ## 🔗 Live Demo
 
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
