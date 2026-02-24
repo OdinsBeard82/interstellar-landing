@@ -1,34 +1,84 @@
 ![Project Screenshot](./assets/screenshot.png)
 
-# Sci-Fi Movie Landing Page
+🚀 Sci-Fi Movie Landing Page
+## 🔗 Live Demo
 
-## Additional Information
+- **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
+- **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-- **Live Demo**: [Netlify Deployment](https://sci-fi-moive-landing-page.netlify.app/)
+📖 Overview
 
-## Overview
+This project is a full-stack responsive movie landing page that dynamically fetches and displays trending sci-fi movies using the TMDb (The Movie Database) API via a custom FastAPI backend.
 
-This project is a responsive landing page that dynamically fetches and displays data about sci-fi movies using the TMDb (The Movie Database) API. The page features a carousel of movie posters, a dropdown for selecting different movies, and sections for movie trailers and detailed information.
+The application features a modern React frontend deployed on Vercel and a FastAPI backend deployed on Render.
 
-## Features
+✨ Features
 
-- **Responsive Design**: Fully responsive and works well on both desktop and mobile devices.
-- **Movie Carousel**: Displays a carousel of movie posters with navigation controls.
-- **Movie Details**: Shows detailed information about selected movies.
-- **Movie Trailers**: Provides links to trailers for selected movies.
-- **Dropdown Selection**: Allows users to select a movie and view its details and trailers.
-- **Error Handling**: Displays error messages if data fetching fails.
+Responsive Design – Works seamlessly on desktop and mobile
 
-## Technologies Used
+Live Movie Data – Fetched from a FastAPI backend
 
-- **Front-End**: React.js
-- **API Integration**: TMDb API
-- **Styling**: CSS
-- **Development Tools**: Create React App
+Trending Movies Endpoint
 
-## Setup
+Dynamic Rendering – React state updates from API responses
 
-### Prerequisites
+CORS Configured for Production
 
-- Node.js and npm installed on your machine.
+Full Deployment Pipeline (GitHub → Vercel + Render)
+
+🛠 Technologies Used
+Frontend
+
+React
+
+Vite
+
+CSS
+
+Backend
+
+FastAPI
+
+Python
+
+TMDb API integration
+
+Deployment
+
+Vercel (Frontend)
+
+Render (Backend)
+
+GitHub (Version Control)
+
+⚙ Setup (Development)
+Prerequisites
+
+Node.js
+
+Python 3.9+
+
+npm
+
+Frontend
+cd frontend
+npm install
+npm run dev
+Backend
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+📌 Notes
+
+This project demonstrates:
+
+Full-stack development
+
+Cross-origin API communication
+
+Production deployment and debugging
+
+Real-world CORS configuration
+
+Version control and CI deployment flow
 
