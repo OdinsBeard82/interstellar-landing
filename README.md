@@ -6,72 +6,90 @@
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
 - **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-This is a fullstack movie app built around the TMDB API.
+# Interstellar Landing
 
-I originally built this as a frontend project, but refactored it into a proper client/server setup once I realized exposing API keys in the browser was bad practice.
+This is a fullstack movie discovery app built on top of the TMDB API.
 
-The app now uses a Node + Express backend that handles all communication with TMDB. The frontend only talks to my own API.
+Originally this started as a frontend-only landing page, but I refactored it to include a backend so that:
 
-Why I Reworked It
+- API keys are never exposed in the browser
+- The frontend only talks to my own server
+- Calls to TMDB are proxied through safe endpoints
+- The app can be deployed fully without VS Code running
 
-I wanted to move beyond static projects and actually build something that reflects how production apps work:
+## What It Is
 
-API keys should not live in frontend code
+There are two parts:
 
-Clients shouldn’t call third-party APIs directly
+- **Backend** — Node + Express that talks to TMDB
+- **Frontend** — static site that fetches from my backend
 
-Environment variables should be managed properly
+The backend handles all communication with TMDB and keeps the TMDB API key secure via environment variables.
 
-Frontend and backend should deploy independently
+## Architecture
 
-This project is where I made that shift.
-
-How It Works
 
 Browser
-→ calls my backend (/api/...)
-→ backend requests data from TMDB
-→ backend returns sanitized response
+→ calls
+My Backend API (Express)
+→ calls
+TMDB API
+→ returns
+Data to frontend
 
-The API key lives in an environment variable on the server.
 
-Backend Stack
+The client does not access TMDB directly.
 
-Node.js
+## API Endpoints
 
-Express
+The backend exposes a small set of REST endpoints:
 
-REST-style routes
+### `GET /api/movies/popular`
 
-Environment variables
+Returns a list of popular movies.
 
-CORS configuration
+### `GET /api/movies/:id`
 
-Example routes:
+Returns detailed data for a specific movie ID.
 
-GET /api/movies/popular
-GET /api/movies/:id
+## How to Run Locally
 
-The backend acts as a proxy and keeps credentials private.
+1. Clone the repo
+2. Create a `.env` file in the `backend/` folder
+3. Add your TMDB API key to `.env`:
 
-Deployment
 
-Frontend and backend are deployed separately.
+TMDB_API_KEY=your_key_here
 
-The backend runs as a cloud service with environment variables configured in production.
 
-The frontend is static and communicates only with the deployed backend URL.
+4. Install and start:
 
-This runs entirely without needing a local development server.
 
-If I Extended This Further
+cd backend
+npm install
+npm start
 
-Next logical steps would be:
 
-Add user accounts and JWT authentication
+This will start the backend server with your API key loaded.
 
-Add a database for storing favourites
+You can then open the frontend locally as static files or with a simple HTTP server.
 
-Add request validation
+## Deployment
 
-Add automated tests
+The backend is deployed as a web service with environment variables configured.
+
+The frontend is deployed as a static site that only makes requests to the deployed backend.
+
+Both parts run without VS Code open.
+
+## What I’d Improve Next
+
+- Add user authentication (JWT)
+- Add a database for user favorites
+- Add automated tests for backend routes
+- Add API documentation (Swagger or Postman)
+- Add CI/CD pipelines
+
+## About Me
+
+I’m a developer working towards fullstack and backend roles. I build and dep
