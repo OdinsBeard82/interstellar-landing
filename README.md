@@ -6,79 +6,74 @@
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
 - **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-📖 Overview
+Interstellar Landing
 
-This project is a full-stack responsive movie landing page that dynamically fetches and displays trending sci-fi movies using the TMDb (The Movie Database) API via a custom FastAPI backend.
+This is a fullstack movie app built around the TMDB API.
 
-The application features a modern React frontend deployed on Vercel and a FastAPI backend deployed on Render.
+I originally built this as a frontend project, but refactored it into a proper client/server setup once I realized exposing API keys in the browser was bad practice.
 
-✨ Features
+The app now uses a Node + Express backend that handles all communication with TMDB. The frontend only talks to my own API.
 
-Responsive Design – Works seamlessly on desktop and mobile
+Why I Reworked It
 
-Live Movie Data – Fetched from a FastAPI backend
+I wanted to move beyond static projects and actually build something that reflects how production apps work:
 
-Trending Movies Endpoint
+API keys should not live in frontend code
 
-Dynamic Rendering – React state updates from API responses
+Clients shouldn’t call third-party APIs directly
 
-CORS Configured for Production
+Environment variables should be managed properly
 
-Full Deployment Pipeline (GitHub → Vercel + Render)
+Frontend and backend should deploy independently
 
-🛠 Technologies Used
-Frontend
+This project is where I made that shift.
 
-React
+How It Works
 
-Vite
+Browser
+→ calls my backend (/api/...)
+→ backend requests data from TMDB
+→ backend returns sanitized response
 
-CSS
+The API key lives in an environment variable on the server.
 
-Backend
-
-FastAPI
-
-Python
-
-TMDb API integration
-
-Deployment
-
-Vercel (Frontend)
-
-Render (Backend)
-
-GitHub (Version Control)
-
-⚙ Setup (Development)
-Prerequisites
+Backend Stack
 
 Node.js
 
-Python 3.9+
+Express
 
-npm
+REST-style routes
 
-Frontend
-cd frontend
-npm install
-npm run dev
-Backend
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-📌 Notes
+Environment variables
 
-This project demonstrates:
+CORS configuration
 
-Full-stack development
+Example routes:
 
-Cross-origin API communication
+GET /api/movies/popular
+GET /api/movies/:id
 
-Production deployment and debugging
+The backend acts as a proxy and keeps credentials private.
 
-Real-world CORS configuration
+Deployment
 
-Version control and CI deployment flow
+Frontend and backend are deployed separately.
 
+The backend runs as a cloud service with environment variables configured in production.
+
+The frontend is static and communicates only with the deployed backend URL.
+
+This runs entirely without needing a local development server.
+
+If I Extended This Further
+
+Next logical steps would be:
+
+Add user accounts and JWT authentication
+
+Add a database for storing favourites
+
+Add request validation
+
+Add automated tests
