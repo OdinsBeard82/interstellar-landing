@@ -6,8 +6,6 @@
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
 - **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-# Interstellar Landing
-
 This is a fullstack movie discovery app built on top of the TMDB API.
 
 Originally this started as a frontend-only landing page, but I refactored it to include a backend so that:
@@ -92,4 +90,4 @@ Both parts run without VS Code open.
 
 ## About Me
 
-I’m a developer working towards fullstack and backend roles. I build and dep
+I’m a developer working towards fullstack and backend roles. I build and deploy backend APIs, and I’m focused on separating frontend and backend responsibilities, handling environment variables correctly, and deploying to cloud services.
