@@ -6,8 +6,6 @@
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
 - **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-Interstellar Landing
-
 This is a fullstack movie app built around the TMDB API.
 
 I originally built this as a frontend project, but refactored it into a proper client/server setup once I realized exposing API keys in the browser was bad practice.
