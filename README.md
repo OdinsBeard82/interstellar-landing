@@ -1,12 +1,13 @@
 ![Project Screenshot](./assets/screenshot.png)
 
-# Fullstack Movie Discovery App
+# Full Stack Movie Discovery App
 
 ## 🔗 Live Demo
-- **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
-- **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-![Project Screenshot](./assets/screenshot.png)
+- **Frontend (Vercel):** https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/
+- **Backend API (Render):** https://interstellar-landing.onrender.com
+
+---
 
 ## Overview
 
