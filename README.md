@@ -6,54 +6,167 @@
 - **Production (Vercel)**: [Live Demo](https://interstellar-landing-git-master-odinsbeard82s-projects.vercel.app/)
 - **Backend API (Render)**: [API Endpoint](https://interstellar-landing.onrender.com)
 
-This is a fullstack movie discovery app built on top of the TMDB API. Originally this started as a frontend-only landing page, but I refactored it to include a backend so that:
+![Project Screenshot](./assets/screenshot.png)
 
-- API keys are never exposed in the browser
-- The frontend only talks to my own server
-- Calls to TMDB are proxied through safe endpoints
-- The app can be deployed fully without VS Code running
+## Overview
+
+This is a full-stack movie discovery application built using **React (Vite)** and **FastAPI**, powered by **The Movie Database (TMDB)** API.
+
+The project originally began as a frontend-only landing page before being refactored into a full-stack application. The goal was to learn how to build a client-server architecture, securely integrate third-party APIs, and deploy frontend and backend services independently.
+
+### Key Features
+
+- Securely stores the TMDB API key on the backend
+- Prevents direct client access to the TMDB API
+- Routes all API requests through a FastAPI backend
+- Separates frontend and backend deployments for a production-style architecture
+
+---
 
 ## Tech Stack
-- Node.js / Express — backend API
-- Vanilla JS / HTML / CSS — frontend
-- Vercel — frontend deployment
-- Render — backend deployment
-- TMDB API — movie data
+
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Backend
+
+- Python
+- FastAPI
+- Uvicorn
+
+### External API
+
+- The Movie Database (TMDB)
+
+### Deployment
+
+- Vercel (Frontend)
+- Render (Backend)
+
+### Tools
+
+- Git
+- GitHub
+
+---
 
 ## Architecture
-Browser → My Backend API (Express) → TMDB API → Data returned to frontend
-The client does not access TMDB directly.
+
+```text
+Browser
+    │
+    ▼
+React (Vite) Frontend
+    │
+HTTP Requests
+    │
+    ▼
+FastAPI Backend
+    │
+TMDB API
+    │
+    ▼
+Movie Data
+```
+
+The frontend never communicates directly with TMDB. Instead, requests are routed through the FastAPI backend, where the API key is securely stored using environment variables. This protects sensitive credentials while providing a clean API layer between the client and TMDB.
+
+---
+
+## Features
+
+- Browse trending and popular movies
+- View detailed movie information
+- Watch movie trailers
+- Responsive user interface
+- Secure backend proxy for TMDB API requests
+- Environment variable configuration
+
+---
 
 ## API Endpoints
 
 ### `GET /api/movies/popular`
+
 Returns a list of popular movies.
 
-### `GET /api/movies/:id`
-Returns detailed data for a specific movie ID.
+### `GET /api/movies/{movie_id}`
 
-## How to Run Locally
+Returns detailed information for a specific movie.
 
-1. Clone the repo
-2. Create a `.env` file in the `backend/` folder:
-```env
-TMDB_API_KEY=your_key_here
+---
+
+## Running Locally
+
+### Clone the repository
+
+```bash
+git clone https://github.com/OdinsBeard82/Fullstack-Movie-Discovery-App.git
+cd Fullstack-Movie-Discovery-App
 ```
-3. Install and start:
+
+### Configure environment variables
+
+Create a `.env` file inside the `backend/` directory:
+
+```env
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+### Start the backend
+
 ```bash
 cd backend
-npm install
-npm start
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-## Deployment
-The backend is deployed as a web service with environment variables configured.
-The frontend is deployed as a static site that only makes requests to the deployed backend.
-Both parts run without VS Code open.
+### Start the frontend
 
-## What I'd Improve Next
-- Add user authentication (JWT)
-- Add a database for user favorites
-- Add automated tests for backend routes
-- Add API documentation (Swagger or Postman)
-- Add CI/CD pipelines
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## Deployment
+
+The application is deployed as two independent services:
+
+- **Frontend:** Hosted on Vercel
+- **Backend:** Hosted on Render
+
+Environment variables are configured on the backend so the TMDB API key is never exposed to the client.
+
+---
+
+## What I Learned
+
+This project helped me gain experience with:
+
+- Building a full-stack application using React and FastAPI
+- Designing RESTful APIs
+- Integrating third-party APIs
+- Protecting API keys using a backend proxy
+- Managing environment variables
+- Configuring CORS between frontend and backend
+- Deploying frontend and backend services independently
+- Debugging communication between distributed services
+
+---
+
+## Future Improvements
+
+- Add user authentication
+- Store favourite movies in a database
+- Add advanced search and filtering
+- Implement automated testing
+- Generate API documentation with OpenAPI/Swagger
+- Add CI/CD using GitHub Actions
+- Containerise the application with Docker
